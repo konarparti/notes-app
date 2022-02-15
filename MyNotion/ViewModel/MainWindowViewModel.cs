@@ -12,8 +12,11 @@ namespace MyNotion.ViewModel
     {
         #region Variables
         private readonly IRepository _repository;
-        private RelayCommand? _getAllInterests;
         private IEnumerable<Interest> _interests;
+        private RelayCommand? _getAllInterests;
+        private RelayCommand? _addInterest;
+        private RelayCommand? _editInterest;
+        private RelayCommand? _deleteInterest;
         #endregion
 
         #region Properties
@@ -44,7 +47,40 @@ namespace MyNotion.ViewModel
             {
                 return _getAllInterests ??= new RelayCommand(g =>
                 {
-                    Interests = _repository.GetAll();
+                    Interests = _repository.Interests;
+                });
+            }
+        }
+
+        public RelayCommand AddInterest
+        {
+            get
+            {
+                return _addInterest ??= new RelayCommand(a =>
+                {
+                    //TODO: add new view for adding
+                });
+            }
+        }
+
+        public RelayCommand EditInterest
+        {
+            get
+            {
+                return _editInterest ??= new RelayCommand(a =>
+                {
+                    //TODO: use AddingView for editing
+                });
+            }
+        }
+
+        public RelayCommand DeleteInterest
+        {
+            get
+            {
+                return _deleteInterest ??= new RelayCommand(a =>
+                {
+                    //TODO: delete logic
                 });
             }
         }

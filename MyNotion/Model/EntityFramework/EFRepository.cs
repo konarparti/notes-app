@@ -14,9 +14,10 @@ namespace MyNotion.Model.EntityFramework
         public EFRepository(MyNotionDbContext context)
         {
             _context = context;
+            _context.Interests.Load();
         }
 
-        public IQueryable<Interest> Interests => _context.Interests;
+        public IEnumerable<Interest> Interests => _context.Interests.Local.ToBindingList();
         public void SaveInterest(Interest interest)
         {
             if (interest.Id == 0)

@@ -12,10 +12,13 @@
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="600*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
             <MenuItem Header="File">
@@ -26,7 +29,10 @@
                 <MenuItem Header="Temp"></MenuItem>
             </MenuItem>
         </Menu>
-        <DataGrid Grid.Row="2" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
-        <Button Grid.Row="3" Content="test" Command="{Binding GetAllInterests}"></Button>
+        <DataGrid Grid.Row="2" Grid.RowSpan="6" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
+        <Button Grid.Row="2" Grid.Column="1" Content="Show" Command="{Binding GetAllInterests}"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Content="Add" Command="{Binding }"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Content="Edit" Command="{Binding }"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Content="Delete" Command="{Binding }"></Button>
     </Grid>
 </Window>

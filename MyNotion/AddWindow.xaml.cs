@@ -11,7 +11,6 @@ namespace MyNotion
         public AddWindow()
         {
             InitializeComponent();
-            DataContext = new AddWindowViewModel();
         }
     }
 }

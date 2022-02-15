@@ -1,5 +1,7 @@
 ﻿using MyNotion.Model.Abstract;
 using System.Collections.Generic;
+using Autofac;
+using MyNotion.Services;
 using ReactiveUI;
 using WPF_MVVM_Classes;
 
@@ -8,6 +10,9 @@ namespace MyNotion.ViewModel
     public class MainWindowViewModel : ReactiveObject
     {
         #region Variables
+
+        protected readonly IContainer _container = Container.ContainerMain().Build(); // контейнер
+
         private readonly IRepository _repository;
         private IEnumerable<Interest> _interests;
         private RelayCommand? _addInterest;

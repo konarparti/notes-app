@@ -12,7 +12,7 @@ namespace MyNotion
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(new EFRepository(new MyNotionDbContext()));
+            DataContext = new MainWindowViewModel(new EFRepository(new MyNotionDbContext()));
         }
     }
 }

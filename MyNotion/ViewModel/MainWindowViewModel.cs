@@ -1,10 +1,11 @@
 ﻿using MyNotion.Model.Abstract;
 using System.Collections.Generic;
+using ReactiveUI;
 using WPF_MVVM_Classes;
 
 namespace MyNotion.ViewModel
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ReactiveObject
     {
         #region Variables
         private readonly IRepository _repository;
@@ -18,11 +19,7 @@ namespace MyNotion.ViewModel
         public IEnumerable<Interest> Interests
         {
             get => _interests;
-            set
-            {
-                _interests = value;
-                OnPropertyChanged();
-            }
+            set => this.RaiseAndSetIfChanged(ref _interests, value);
         }
 
         #endregion
@@ -44,7 +41,7 @@ namespace MyNotion.ViewModel
             {
                 return _addInterest ??= new RelayCommand(a =>
                 {
-                    //TODO: add new view for adding
+                    
                 });
             }
         }

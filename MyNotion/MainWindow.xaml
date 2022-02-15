@@ -14,13 +14,15 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition Width="600*"></ColumnDefinition>
             <ColumnDefinition Width="100*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Header="File">
                 <MenuItem Header="Temp"></MenuItem>
             </MenuItem>
@@ -29,10 +31,10 @@
                 <MenuItem Header="Temp"></MenuItem>
             </MenuItem>
         </Menu>
-        <DataGrid Grid.Row="2" Grid.RowSpan="4" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
-        <Button Grid.Row="2" Grid.Column="1" Content="Show" Margin="5" Command="{Binding }"></Button>
-        <Button Grid.Row="3" Grid.Column="1" Content="Add" Margin="5" Command="{Binding AddInterest}"></Button>
-        <Button Grid.Row="4" Grid.Column="1" Content="Edit" Margin="5" Command="{Binding EditInterest}"></Button>
-        <Button Grid.Row="5" Grid.Column="1" Content="Delete" Margin="5" Command="{Binding DeleteInterest }"></Button>
+        <DataGrid Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
+        <Button Grid.Row="2" Grid.Column="2" Content="Show" Margin="5" Command="{Binding }"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Content="Add" Margin="5" Command="{Binding AddInterest}"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="Edit" Margin="5" Command="{Binding EditInterest}"></Button>
+        <Button Grid.Row="5" Grid.Column="2" Content="Delete" Margin="5" Command="{Binding DeleteInterest }"></Button>
     </Grid>
 </Window>

@@ -1,9 +1,5 @@
-﻿using System;
+﻿using MyNotion.Model.Abstract;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyNotion.Model.Abstract;
 using WPF_MVVM_Classes;
 
 namespace MyNotion.ViewModel
@@ -13,7 +9,6 @@ namespace MyNotion.ViewModel
         #region Variables
         private readonly IRepository _repository;
         private IEnumerable<Interest> _interests;
-        private RelayCommand? _getAllInterests;
         private RelayCommand? _addInterest;
         private RelayCommand? _editInterest;
         private RelayCommand? _deleteInterest;
@@ -36,22 +31,13 @@ namespace MyNotion.ViewModel
         public MainWindowViewModel(IRepository repository)
         {
             _repository = repository;
+            _interests = _repository.Interests;
         }
 
         #endregion
 
         #region Commands
-        public RelayCommand GetAllInterests
-        {
-            get
-            {
-                return _getAllInterests ??= new RelayCommand(g =>
-                {
-                    Interests = _repository.Interests;
-                });
-            }
-        }
-
+        
         public RelayCommand AddInterest
         {
             get

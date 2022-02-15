@@ -29,10 +29,10 @@
                 <MenuItem Header="Temp"></MenuItem>
             </MenuItem>
         </Menu>
-        <DataGrid Grid.Row="2" Grid.RowSpan="6" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
-        <Button Grid.Row="2" Grid.Column="1" Content="Show" Command="{Binding GetAllInterests}"></Button>
-        <Button Grid.Row="3" Grid.Column="1" Content="Add" Command="{Binding }"></Button>
-        <Button Grid.Row="4" Grid.Column="1" Content="Edit" Command="{Binding }"></Button>
-        <Button Grid.Row="5" Grid.Column="1" Content="Delete" Command="{Binding }"></Button>
+        <DataGrid Grid.Row="2" Grid.RowSpan="4" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
+        <Button Grid.Row="2" Grid.Column="1" Content="Show" Margin="5" Command="{Binding }"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Content="Add" Margin="5" Command="{Binding AddInterest}"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Content="Edit" Margin="5" Command="{Binding EditInterest}"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Content="Delete" Margin="5" Command="{Binding DeleteInterest }"></Button>
     </Grid>
 </Window>

@@ -8,6 +8,8 @@ namespace MyNotion.Model.Abstract
 {
     public interface IRepository
     {
-        IEnumerable<Interest> GetAll();
+        IQueryable<Interest> Interests { get; }
+        void SaveInterest(Interest interest);
+        Interest? DeleteInterest(long interestsID);
     }
 }

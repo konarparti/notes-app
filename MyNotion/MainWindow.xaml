@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MyNotion"
+        xmlns:local="clr-namespace:MyNotion" xmlns:viewmodel="clr-namespace:MyNotion.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="MyNotion" Height="450" Width="800">
     <Grid>
@@ -32,9 +32,8 @@
             </MenuItem>
         </Menu>
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" IsReadOnly="True" ItemsSource="{Binding Interests}"></DataGrid>
-        <Button Grid.Row="2" Grid.Column="2" Content="Show" Margin="5" Command="{Binding }"></Button>
-        <Button Grid.Row="3" Grid.Column="2" Content="Add" Margin="5" Command="{Binding AddInterest}"></Button>
-        <Button Grid.Row="4" Grid.Column="2" Content="Edit" Margin="5" Command="{Binding EditInterest}"></Button>
-        <Button Grid.Row="5" Grid.Column="2" Content="Delete" Margin="5" Command="{Binding DeleteInterest }"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Content="Add" Margin="5" Command="{Binding AddInterest}"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Content="Edit" Margin="5" Command="{Binding EditInterest}"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="Delete" Margin="5" Command="{Binding DeleteInterest }"></Button>
     </Grid>
 </Window>

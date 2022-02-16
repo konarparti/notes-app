@@ -1,6 +1,9 @@
 ﻿using MyNotion.Model.Abstract;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Autofac;
+using MyNotion.Dialogs;
+using MyNotion.Dialogs.Abstract;
 using MyNotion.Services;
 using ReactiveUI;
 using WPF_MVVM_Classes;
@@ -12,10 +15,13 @@ namespace MyNotion.ViewModel
         #region Variables
 
         protected readonly IContainer _container = Container.ContainerMain().Build(); // контейнер
+        private readonly IDialogManager _dialogManager;
 
         private readonly IRepository _repository;
         private IEnumerable<Interest> _interests;
-        private RelayCommand? _addInterest;
+
+        private ICommand _addInterest;
+
         private RelayCommand? _editInterest;
         private RelayCommand? _deleteInterest;
         #endregion
@@ -30,24 +36,22 @@ namespace MyNotion.ViewModel
         #endregion
 
         #region Constructors
-        public MainWindowViewModel(IRepository repository)
+        public MainWindowViewModel(IRepository repository, IDialogManager dialogManager)
         {
             _repository = repository;
             _interests = _repository.Interests;
+            _dialogManager = dialogManager;
         }
 
         #endregion
 
         #region Commands
         
-        public RelayCommand AddInterest
+        public ICommand AddInterest
         {
             get
             {
-                return _addInterest ??= new RelayCommand(a =>
-                {
-                    
-                });
+                return _addInterest ??= ReactiveCommand.Create(AddInterestsMethod);
             }
         }
 
@@ -71,6 +75,15 @@ namespace MyNotion.ViewModel
                     //TODO: delete logic
                 });
             }
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void AddInterestsMethod()
+        {
+            _dialogManager.ShowDialog(DialogKeys.AddInterests, 1);
         }
 
         #endregion

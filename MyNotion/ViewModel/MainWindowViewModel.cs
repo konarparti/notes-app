@@ -50,7 +50,7 @@ namespace MyNotion.ViewModel
         public ICommand AddInterest
         {
             get
-            {
+            {                
                 return _addInterest ??= ReactiveCommand.Create(AddInterestsMethod);
             }
         }

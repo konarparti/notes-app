@@ -1,55 +1,57 @@
 ﻿using MyNotion.Model.Abstract;
+using ReactiveUI;
 using System.Collections.Generic;
+using System.Windows.Input;
 using WPF_MVVM_Classes;
 
 namespace MyNotion.ViewModel
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ReactiveObject
     {
         #region Variables
+
+        private readonly AddWindowViewModel _addWindowViewModel;
         private readonly IRepository _repository;
         private IEnumerable<Interest> _interests;
-        private RelayCommand? _addInterest;
-        private RelayCommand? _editInterest;
-        private RelayCommand? _deleteInterest;
+        private ICommand? _addInterest;
+        private ICommand? _editInterest;
+        private ICommand? _deleteInterest;
         #endregion
 
         #region Properties
         public IEnumerable<Interest> Interests
         {
             get => _interests;
-            set
-            {
-                _interests = value;
-                OnPropertyChanged();
-            }
+            set => this.RaiseAndSetIfChanged(ref _interests, value);
         }
 
         #endregion
 
         #region Constructors
-        public MainWindowViewModel(IRepository repository)
+        public MainWindowViewModel(IRepository repository, AddWindowViewModel addWindowViewModel)
         {
             _repository = repository;
             _interests = _repository.Interests;
+            _addWindowViewModel = addWindowViewModel;
         }
 
         #endregion
 
         #region Commands
         
-        public RelayCommand AddInterest
+        public ICommand AddInterest
         {
             get
             {
                 return _addInterest ??= new RelayCommand(a =>
                 {
-                    //TODO: add new view for adding
+                    var window = new AddWindow{DataContext = _addWindowViewModel};
+                    window.Show();
                 });
             }
         }
 
-        public RelayCommand EditInterest
+        public ICommand EditInterest
         {
             get
             {
@@ -60,7 +62,7 @@ namespace MyNotion.ViewModel
             }
         }
 
-        public RelayCommand DeleteInterest
+        public ICommand DeleteInterest
         {
             get
             {
